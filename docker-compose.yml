@@ -10,15 +10,11 @@ services:
     depends_on:
       - db
     restart: always
-    volumes:
-      - .:/app
     networks:
       - app-network
 
   db:
     image: postgres:13
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
@@ -28,9 +24,6 @@ services:
     restart: always
     networks:
       - app-network
-
-volumes:
-  postgres_data:
 
 networks:
   app-network:
